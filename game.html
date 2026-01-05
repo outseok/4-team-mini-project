@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>틀린 그림 찾기</title>
+    <meta charset = 'utf8'>
+    <style>
+        #markup{
+            position :relative;
+            display: inline-block;
+        }
+        #marker{
+            position : absolute;
+            width : 30px;
+            height : 30px;
+            border : 3px solid red;
+            border-radius : 15px;
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        function change(){
+            let pos_x = document.getElementById('pos_x');
+            let pos_y = document.getElementById('pos_y');
+            pos_x.value = event.clientX;
+            pos_y.value = event.clientY;                              
+        }
+        function check(x, y){
+            for(let i = 0; i < answers.length; i++){
+                let answer = answers[i];
+                let ran = Math.sqrt(Math.pow(x - answer.x, 2) + Math.pow(y - answer.y, 2));
+                if(ran <= answer.range && !answer.found){
+                    answer.found = true;
+                    foundCount++;
+                    document.getElementById('count').value = foundCount;
+                    alert("찾았습니다!");
+                    return;
+                }
+            }
+        }
+
+        function 
+    </script>
+    <style>
+        
+    </style>  
+
+</head>
+<body>
+    <script>
+    const answers = [
+    { x: 782, y: 97, range: 40, name: 'cat', found: false },
+    { x: 870, y: 250, range: 50, name: 'post', found: false },
+    { x: 820, y: 380, range: 30, name: 'pot', found: false},
+    { x: 1100, y: 540, range: 40, name: 'books', found: false },
+    { x: 600, y: 400, range: 50, name: 'lamp', found: false }
+    ];
+    
+    let foundCount = 0;
+
+    </script>
+    
+    <span id = 'content' onmousemove = "change()">
+        <br><img src = './image/wrong.png' width = '1200' height = '600'>
+    </span>
+    <h1>찾은 개수: <input type="textarea" id="found_count" width="100" height="30"></h1>
+</body>
+</html>
