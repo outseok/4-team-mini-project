@@ -1,0 +1,155 @@
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+<!--쿠키 넣기-->
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>다이어리 인풋</title>
+</head>
+
+<body>
+
+    <style>
+        .top-box {
+            width: 89%;
+            text-align: center;
+            background-color: rgba(245, 245, 245, 0.6);
+            font-size: 25px;
+            color: purple;
+            padding: 10px 0;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 0px solid black;
+        }
+
+        .emotion-icon {
+            filter: grayscale(80%);
+            transition: all 0.3s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .emotion-icon:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .emotion-selected {
+            filter: grayscale(0%) !important;
+            transform: scale(1.3);
+        }
+
+        .diary {
+            width: 89%;
+            height: 95%;
+            border: 1px solid pink !important;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+            resize: none;
+            background-color: rgba(249, 249, 249, 0.8);
+        }
+
+        body {
+            background-image: url('./background_img.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        div {
+            position: relative;
+        }
+
+        .date {
+            position: absolute;
+            top: 140px;
+            right: 12%;
+            font-size: 12px;
+        }
+
+        .saveBtn {
+            position: absolute;
+            top: 660px;
+            right: 12%;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
+
+    <script>
+        function selectEmotion(element, emotionValue) {
+            var icons = document.getElementsByClassName('emotion-icon');
+            for (var i = 0; i < icons.length; i++) {
+                icons[i].classList.remove('emotion-selected');
+            }
+            element.classList.add('emotion-selected');
+            document.getElementById('selected_emotion').value = emotionValue;
+        }
+        function imageClicked1() {
+            alert("행복한 하루를 보냈군요!😄\n앞으로도 행복이 가득하길 바랄게요🍀");
+        }
+        function imageClicked2() {
+            alert("그저 그런 하루였군요🙄\n내일은 행복하기를 기원할게요🍀");
+        }
+        function imageClicked3() {
+            alert("슬픈 일이 있었군요..😭\n감정 일기를 작성하며 힘든 것을 떨쳐내기를 바랄게요🍀");
+        }
+        function imageClicked4() {
+            alert("화가 나는 일이 있었군요😡\n저에게 모든 화를 분출하여 스트레스를 풀어보세요!🔥");
+        }
+    </script>
+
+
+
+    <body>
+        <p class = "top-box">나만의 감정 일기장💌🔐📖📑</p>
+        <form action="diary_save.php" method="POST">
+            <br><br>
+            <input type="hidden" name="emotion" id="selected_emotion" value="">
+            <div class="emotion">
+                <img src='./d_happy.png' class="emotion-icon" title='행복해요' width="20" height="20" alt='행복해요'
+                    onclick="selectEmotion(this, '행복'); imageClicked1();">
+                <img src='./d_soso.png' class="emotion-icon" title='보통이에요' width="20" height="20" alt='보통이에요'
+                    onclick="selectEmotion(this, '보통'); imageClicked2();">
+                <img src='./d_sad.png' class="emotion-icon" title='슬퍼요' width="20" height="20" alt='슬퍼요'
+                    onclick="selectEmotion(this, '슬픔'); imageClicked3();">
+                <img src='./d_angry.png' class="emotion-icon" title='화나요' swidth="20" height="20" alt='화나요'
+                    onclick="selectEmotion(this, '화남'); imageClicked4();">
+            </div>
+            <input type="text" name="title" placeholder="제목을 입력하세요.">
+            <div class="date">
+                <label for="event_date" name="date_sel">날짜 선택 : </label>
+                <input type="date" id="event_date" name="event_date" required>
+                <br>
+            </div>
+            <textarea class="diary" name='content' placeholder="오늘의 감정을 기록해보세요!(예시 : 오늘은 강아지와 산책을 해서 기분이 좋은 날이다.)"
+                rows="25" cols="45" required></textarea><br>
+            <button type="submit" class="saveBtn">저장</button>
+        </form>
+    </body>
+
+</html>
