@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>도움페이지</title>
+    <style>
+    table1 {
+    background-color: rgba(192, 192, 192, 0.6);
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    }
+    </style>
+    <script>
+        function checkInput() {
+            const select = document.getElementById("helpSelect");
+
+            switch (select.value) {
+                case "call":
+                    window.location.href = "callcenter.html";
+                    break;
+                case "web":
+                    window.location.href = "helpweb.html";
+                    break;
+            }
+        }
+        function chclick(){
+            alert("이스터에그 발견! 100포인트 획득!")
+            const f = document.createElement("form");
+            f.method = "post";
+            f.action = "point.php";
+
+            const i = document.createElement("input");
+            i.type = "hidden";
+            i.name = "mode";
+            i.value = "egg";
+
+            f.appendChild(i);
+            document.body.appendChild(f);
+            f.submit();
+        }
+
+        function checlick()
+        {
+            
+        }
+    </script>
+</head>
+
+<body>
+    <img src="./help.png" alt="예시 이미지" style = "display:none;" onclick=chclick()>
+    <img src="./bg.png" alt="배경이미지" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;">
+    <h2>메인</h2>
+    <h1>도움 페이지에 오신 걸 환영합니다.</h1>
+    <p>어떤 도움이 필요하신가요?</p>
+    
+        </form>
+    </fieldset>
+    <p>
+        <table1>
+            <tr>
+                <td>
+                    <a href='./main.html'>
+                        <img src='./image/home.png' title='홈' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./store.html'>
+                        <img src='./image/store.png' title='상점' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./game.html'>
+                        <img src='./image/game.png' title='미니게임' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./help.html'>
+                        <img src='./image/speech.png' title='도움 페이지' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./diary.html'>
+                        <img src='./image/diary.png' title='다이어리' width='85' height='85'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./profile.html'>
+                        <img src='./image/profile.png' title='프로필' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+        </table1>
+    <form>
+        <select name="helpSelect" id="helpSelect" onchange="checkInput()">
+            <option value="none">--선택하세요--</option>
+            <option value="call">전화번호 정보</option>
+            <option value="web">홈페이지 정보</option>
+        </select>
+    </form>
+    <br>
+    <textarea rows="10" cols="78" readonly style = 'background-color:rgba(249, 249, 249, 0.8); font-size:35px;'>
+안녕하세요! 도움 페이지에 오신 것을 환영합니다.
+여기에서는 다양한 도움말과 정보를 제공하여 여러분의 궁금증을 해결해 드립니다.
+필요한 도움말을 선택하여 관련 정보를 확인해 보세요.
+감사합니다!
+    </textarea>
+    <marquee scrollamount="20"><img src="./help.png" width="600" height="200" alt="도움이미지"></marquee>
+    <marquee direction="down" scrollamount="20" style="height:100vh; text-align:center;">
+        <img src="./help.png" width="600" height="400" alt="도움이미지" style="position:relative; top:-400px;"></marquee>   
+    <marquee direction="right" scrollamount="100"><img src="./help.png" width="200" height="200" alt="도움이미지" onclick="chclick()"></marquee>
+
+</body>
+
+</html>
