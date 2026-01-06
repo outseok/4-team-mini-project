@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>회원 로그인 페이지</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('./background_img.png');
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            width: 350px;
+            height: 350px;
+            border: 1px solid pink !important;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+            resize: none;
+            background-color: rgba(249, 249, 249, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="login_porocess.php" method='post' class="login-container">
+        <fieldset style="width:300px">
+            <br>
+            <legend>로그인</legend>
+            <table bolder='10'></table><br>
+            ID : <input type="text" name="uid" placeholder="아이디" required>
+            <br><br>
+            PW : <input type="password" name="upw" placeholder="비밀번호" required>
+            <br><br>
+            <input type="submit" value="로그인">
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
