@@ -4,7 +4,7 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'skt');
 if (!$db) die("DB 연결 실패");
 
-$id = $_SESSION['id'] ?? null;
+$id = $_SESSION['uid'] ?? null;
 if (!$id) {
     exit();   
 }
