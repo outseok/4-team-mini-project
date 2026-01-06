@@ -10,7 +10,7 @@
         $type = $_POST['type'];
         $uid = '124';
 
-        $dbcon = mysqli_connect('localhost', 'root', '', 'heal');
+        $dbcon = mysqli_connect('localhost', 'root', '');
         $query2 = "select point from point where uid = $uid";
         $result2 = mysqli_query($dbcon, $query2);
         $row_result = mysqli_fetch_array($result2);
@@ -20,6 +20,12 @@
         $result_item = mysqli_query($dbcon, $query_item);
         $row_item = mysqli_fetch_array($result_item);
         $image_path = $row_item['image'];
+        $imagepath = "./image/".$image_path;
+
+        // $image_info = pathinfo($_FILES['image']['name']);
+        // $image_name = $image_info['filename'];
+        // $image_ext = $image_info['extension'];
+        // $image
 
         $query = "select price from item where type = '$type' AND price = $price";
         $result = mysqli_query($dbcon, $query);
