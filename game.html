@@ -10,7 +10,7 @@
             position: relative;
             display: inline-block;
             line-height: 0;
-        
+
         }
 
         .marker {
@@ -22,34 +22,36 @@
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 10;
-            
+
         }
+
         img {
             display: block;
         }
+
+        table1 { 
+                background-color: rgba(192, 192, 192, 0.6);
+                width: 100px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
     </style>
 </head>
 
 <body>
-    <h1>
-        찾은 개수:
-        <input type="text" id="count" readonly style="width:60px;">
-    </h1>
-        
-    <div id="markup">
-        <img id="pic" src="../image/wrong.png" width="1200" height="600" alt="틀린그림">
-    </div>
-
     <script>
-        
+
         const BASE_W = 1200;
         const BASE_H = 600;
 
         const answers = [
             { x: 782, y: 97, name: 'cat', range: 40, found: false },
             { x: 870, y: 250, name: 'post', range: 50, found: false },
-            { x: 965, y: 77, name: 'watch',range: 30, found: false },
-            { x: 1100, y: 540, name: 'books',range: 40, found: false },
+            { x: 965, y: 77, name: 'watch', range: 30, found: false },
+            { x: 1100, y: 540, name: 'books', range: 40, found: false },
             { x: 820, y: 360, name: 'pot', range: 50, found: false }
         ];
 
@@ -57,6 +59,9 @@
 
         function count() {
             document.getElementById("count").value = found;
+        }
+        function leftcount() {
+            document.getElementById("left").value = left();
         }
 
         function pos(e, img) {
@@ -73,7 +78,7 @@
             const px = x * (r.width / BASE_W);
             const py = y * (r.height / BASE_H);
 
-            const m = document.createElement("span"); 
+            const m = document.createElement("span");
             m.className = "marker";
             m.style.left = px + "px";
             m.style.top = py + "px";
@@ -88,27 +93,115 @@
                     finish();
                     count();
                     mark(a.x, a.y, img);
+                    leftcount();
                     return;
                 }
             }
         }
 
-        window.clickcheck("load", () => {
+        function imgClick(e) {
             const img = document.getElementById("pic");
-            count();
+            const p = pos(e, img);
+            check(p.x, p.y, img);
+        }
 
-            img.clickcheck("click", (e) => {
-                const p = pos(e, img);
-                check(p.x, p.y, img);
-            });
-        });
-        
+
+
+
         function finish() {
             if (found == 5) {
                 alert("성공! 500포인트 획득!:");
+                finishphp();
             }
         }
+
+        function left() {
+            return answers.length - found;
+        }
+        function finishphp() {
+            const f = document.createElement("form");
+            f.method = "post";
+            f.action = "point.php";
+
+            const i = document.createElement("input");
+            i.type = "hidden";
+            i.name = "finish";
+            i.value = "1";
+
+            f.appendChild(i);
+            document.body.appendChild(f);
+            f.submit();
+        }
     </script>
+    <img src="./bg.png" alt="배경이미지" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;">
+
+    <h1>
+        찾은 개수:
+        <input type="text" id="count" readonly style="width:60px;">
+    </h1>
+    <h3>
+        남은 개수:
+        <input type="text" id="left" readonly style="width:60px;">
+    </h3>
+
+
+    
+
+    <p>
+        <br>
+        <table1>
+            <tr>
+                <td>
+                    <a href='./main.html'>
+                        <img src='./image/home.png' title='홈' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./store.html'>
+                        <img src='./image/store.png' title='상점' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./game.html'>
+                        <img src='./image/game.png' title='미니게임' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./help.html'>
+                        <img src='./image/speech.png' title='도움 페이지' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./diary.html'>
+                        <img src='./image/diary.png' title='다이어리' width='85' height='85'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./profile.html'>
+                        <img src='./image/profile.png' title='프로필' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+        </table1><br>
+
+
+    <div id="markup">
+        <img id="pic" src="./wrong.png" width="1200" height="600" alt="틀린그림" onclick="imgClick(event)">
+
+    </div>
+    <button onclick="location.reload()">초기화</button>
+  
+
 </body>
 
 </html>
