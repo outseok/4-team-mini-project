@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>도움페이지</title>
+
+    <script>
+        function checkInput() {
+            const select = document.getElementById("helpSelect");
+
+            switch (select.value) {
+                case "call":
+                    window.location.href = "callcenter.html";
+                    break;
+                case "main":
+                    window.location.href = "help.html";
+                    break;
+            }
+        }
+    </script>
+    <style>
+        .info {
+            width: 90%;
+            height: 500px;
+            overflow-y: auto;
+            background-color: rgba(249, 249, 249, 0.8);
+            font-size: 35px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            word-break: break-all;
+        }
+
+        table1 {
+            background-color: rgba(192, 192, 192, 0.6);
+            width: 100px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./bg.png" alt="배경이미지" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;">
+
+    <h1>상담 홈페이지 정보에 오신 걸 환영합니다.</h1>
+    <p>다른 도움이 필요하신가요?</p>
+
+    <form>
+        <select name="helpSelect" id="helpSelect" onchange="checkInput()">
+            <option value="none">--선택하세요--</option>
+            <option value="call">전화번호 정보</option>
+            <option value="main">메인</option>
+        </select>
+    </form>
+    <p>
+        <table1>
+            <tr>
+                <td>
+                    <a href='./main.html'>
+                        <img src='./image/home.png' title='홈' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./store.html'>
+                        <img src='./image/store.png' title='상점' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./game.html'>
+                        <img src='./image/game.png' title='미니게임' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./help.html'>
+                        <img src='./image/speech.png' title='도움 페이지' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./diary.html'>
+                        <img src='./image/diary.png' title='다이어리' width='85' height='85'>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href='./profile.html'>
+                        <img src='./image/profile.png' title='프로필' width='80' height='80'>
+                    </a>
+                </td>
+            </tr>
+        </table1>
+    <div class="info">
+<strong>● 공공 정신건강 상담/정보</strong>
+
+<strong>국가정신건강정보포털:</strong> 정신질환 정보, 자가검진, 지역 정신건강복지센터·의료기관 검색, 약 정보 등을 한 번에 볼 수 있는 공공 포털 사이트.
+ → <a href="https://www.mentalhealth.go.kr" target="_blank">https://www.mentalhealth.go.kr</a>
+
+<strong>보건복지부 정신건강 복지센터·상담전화 안내:</strong> 전국 시·군·구 정신건강복지센터 정보와 정신건강 위기상담전화 1577-0199, 국번 없이 129 등 안내 제공.
+→ <a href="https://www.mohw.go.kr" target="_blank">https://www.mohw.go.kr</a>
+
+<strong>국립정신건강센터:</strong> 보건복지부 산하 기관으로, 정신건강 정보, 교육, 관련 자료와 포털 운영 등 제공.
+→ <a href="https://www.ncmh.go.kr" target="_blank">https://www.ncmh.go.kr</a>
+
+<strong>보건복지상담센터 ‘힘이 되는 129’:</strong> 복지, 정신건강, 자살, 알코올 중독 등 전화·채팅 상담 제공.
+→ <a href="https://www.129.go.kr" target="_blank">https://www.129.go.kr</a>
+
+<strong>● 청년/온라인 특화 공공 서비스</strong>
+
+<strong>청년마음건강지원 (복지로):</strong> 1:1 전문 심리상담 지원, 온라인 신청 가능.
+→ <a href="https://www.bokjiro.go.kr" target="_blank">https://www.bokjiro.go.kr</a>
+
+<strong>SNS 상담 앱 ‘마들랜’:</strong> 고립·은둔 청년 등을 위한 비대면 상담 채널.
+→ <a href="https://search.naver.com/search.naver?query=마들랜+마음을+들어주는+랜선친구" target="_blank">마들랜 검색하기</a>
+
+<strong>● 서울·지자체 플랫폼</strong>
+
+<strong>블루터치:</strong> 서울시 정신건강 통합 플랫폼.
+→ <a href="https://blutouch.net" target="_blank">https://blutouch.net</a>
+
+<strong>(부산 예시) 청년 마음이음:</strong> 부산시 청년 대상 1:1 상담 지원 프로그램.
+→ <a href="https://young.busan.go.kr" target="_blank">https://young.busan.go.kr</a>
+</body>
+
+</html>
