@@ -16,7 +16,7 @@
         $row_result = mysqli_fetch_array($result2);
         $np = $row_result['point'];
 
-        $query_item = "select image from item where type = '$type'";
+        $query_item = "select image from item where type = '$type' AND price = $price";
         $result_item = mysqli_query($dbcon, $query_item);
         $row_item = mysqli_fetch_array($result_item);
         $image_path = $row_item['image'];
@@ -33,8 +33,18 @@
             }else{
             $query1 = "update point set point = point - $price where uid = $uid";
             mysqli_query($dbcon, $query1);
-            $move = "update myitem set uid = $uid AND image = '$image_path' where type = '$type'";
-            mysqli_query($dbcon, $move);
+            $ok = "select * from myitem";
+            $rok = mysqli_query($dbcon, $ok);
+            $roka = mysqli_fetch_array($rok);
+            if($roka['uid'] != $uid){
+                $ins = "insert into myitem value('$uid', '$type', '$type', '$image_path')";
+                mysqli_query($dbcon, $ins);
+                
+            }else{
+                $mv = "update myitem set image = '$image_path' where type = '$type'";
+                mysqli_query($dbcon, $mv);
+            }
+            
         }
         
 

@@ -181,7 +181,7 @@ mysqli_close($db);
                         <input type = 'button' value = '1500' onclick = "checkButton(this.value, 'pet')">
                     </td>
                     <td>
-                        <input type = 'button' value = '1500' onclick = "checkButton(this.value, 'pet')">
+                        <input type = 'button' value = '1800' onclick = "checkButton(this.value, 'pet')">
                     </td>
                 </tr>
             </table>
