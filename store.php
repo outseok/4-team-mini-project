@@ -1,0 +1,192 @@
+<?php
+session_start();
+
+$db = mysqli_connect('localhost', 'root', '', 'heal');
+mysqli_set_charset($db, 'utf8');
+$id = '124';
+
+$query = "select point from point where uid = '$id'";
+$result = mysqli_query($db, $query);
+$row = mysqli_fetch_assoc($result);
+
+$point = $row['point'] ?? 0;
+mysqli_close($db);
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = 'UTF-8'>
+        <title>STORE</title>
+        <style>
+            body {
+                background-image: url('./image/back.png');
+                background-repeat:no-repeat;
+                background-size:cover;
+            }
+            
+            table1 { 
+                background-color: rgba(192, 192, 192, 0.6);
+                width: 100px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            #m{
+                position: absolute;
+                width: '100%';
+                text-align: left;
+                
+            }
+        </style>
+        <script>
+            
+            
+
+            
+            function checkButton(b_price, type){
+                document.getElementById('price').value = b_price;
+                document.getElementById('type').value = type;
+                document.b_list.submit();
+            }
+        </script>
+
+    </head>
+    <body>
+        <fieldset style = "width:100px; position: absolute; right: 7%; top: 10px;" >
+            <legend style="border-color:aliceblue; background-color: rgba(0,0,0,1,); ">Point</legend>
+                <input type = 'text' id = 'point' name = 'point' value = '<?php echo $point; ?>' readonly>
+                
+        </fieldset>
+        <p>
+            <table1>
+                <tr>
+                    <td>
+                        <a href = './main.php'>
+                            <img src = './image/home.png' title = '홈' width = '80' height = '80'>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href = './store.php'>
+                            <img src = './image/store.png' title = '상점' width = '80' height = '80'>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href = './game.html'>
+                            <img src = './image/game.png' title = '미니게임' width = '80' height = '80'>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href = './help.html'>
+                            <img src = './image/speech.png' title = '도움 페이지' width = '80' height = '80'>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href = './diary.html'>
+                            <img src = './image/diary.png' title = '다이어리' width = '85' height = '85'>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href = './profile.html'>
+                            <img src = './image/profile.png' title = '프로필' width = '80' height = '80'>
+                        </a>
+                    </td>
+                </tr>
+            </table1><br>
+            
+        </p>
+        <div id = 'm'>
+            <marquee direction = 'right' width = '80%' height = '80' scrollamount = '10n'>
+                <img src = './image/cloud.png' title = '' width = '100' >
+                <img src = './image/cloud2.png' title = '' width = '100'>
+            </marquee>
+            <marquee direction = 'left' width = '90%' height = '80' scrollamount = '6n'>
+                <img src = './image/cloud2.png' title = '날 클릭해봐' width = '100'>
+                <img src = './image/cloud.png' title = '날 클릭해봐' width = '100'>
+            </marquee>
+            
+        </div>
+        <form action = './buy.php' method = 'post' name = 'b_list'>
+            <input type = 'hidden' id = 'price' name = 'price'>
+            <input type = 'hidden' id = 'type' name = 'type'>
+                <table border='0' cellpadding='5' rowpadding='40' width = '800' height = '400'  style="position: absolute; margin: auto; margin-top: 6%; margin-left: 24%; text-align: center; background-color: rgba(192, 192, 192, 0.6);">
+                <tr>
+                    <td>
+                        <img src = './image/smalltree.png' width = '100' height = '100'>
+                    </td>
+                    <td>
+                        <img src = './image/middletree.png' width = '100' height = '100'>
+                    </td>
+                    <td>
+                        <img src = './image/bigtree.png' width = '100' height = '100'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        <input type = 'button' value = '500' onclick = "checkButton(this.value, 'tree')">
+                    </td>
+                    <td>
+                        
+                        <input type = 'button' value = '1000' onclick = "checkButton(this.value, 'tree')">
+                    </td>
+                    <td>
+                        
+                        <input type = 'button' value = '2000' onclick = "checkButton(this.value, 'tree')">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src = './image/treehouse.png' width = '100' height = '100'>
+                    </td>
+                    <td>
+                        <img src = './image/stonehouse.png' width = '100' height = '100'>
+                    </td>
+                    <td>
+                        <img src = './image/house.png' width = '100' height = '100'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type = 'button' value = '500' onclick = "checkButton(this.value, 'house')">
+                    </td>
+                    <td>
+                        <input type = 'button' value = '1000' onclick = "checkButton(this.value, 'house')">
+                    </td>
+                    <td>
+                        <input type = 'button' value = '2000' onclick = "checkButton(this.value, 'house')">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src = './image/dog.png' width = '100' height = '110'>
+                    </td>
+                    <td>
+                        <img src = './image/cat.png' width = '90' height = '110'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type = 'button' value = '1500' onclick = "checkButton(this.value, 'pet')">
+                    </td>
+                    <td>
+                        <input type = 'button' value = '1800' onclick = "checkButton(this.value, 'pet')">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        
+        
+    </body>
+</html>
