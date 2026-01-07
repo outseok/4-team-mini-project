@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title> DATA </title>
+        <style>
+            input[type = 'text'], input[type = 'password']{
+                background-color: rgb(253, 202, 182);
+            }
+        </style>
+</head>
+
+<body background="background.png" style='background-repeat: no-repeat; background-size: cover;'>
+    <marquee scrollamount = '3'>
+        <img src = './web/cloud.png' width="300px" height="200px">
+
+    </marquee>
+    <form action='userjoin.php' method='post'>
+
+        <table border='0' cellpadding='20' rowpadding='40'
+            style="background-color: transparent; margin: auto;margin-top: -4%;">
+            <tr>
+                <td>
+                    <center>
+                        <font style='font-weight: 600; font-size: 1.7em;'>회원가입</font>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td style='text-align: right;'>
+                    이름을 입력하세요! <input type='text' name='uname' required> <br><br>
+                    ID를 입력하세요! <input type ='text' name='uid' required><br><br>
+                    PW를 입력하세요! <input type='password' name='upw' required><br><br>
+                    PW를 다시 입력하세요! <input type='password' style = 'background-color: rgb(191, 221, 239);' name='reupw' required><br><br>
+                    E-mail을 입력하세요! <input type='email' name='umail' style = 'background-color: rgb(191, 221, 239);'><br><br><br><br>
+                    <input type='submit' value='회원가입'
+                        style='background: rgb(232, 199, 186); margin: auto; block-size: 2em;font-size: 2em'>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
