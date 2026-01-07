@@ -11,14 +11,10 @@
     body{background-color: rgba(220,241,254,0.8);}
 </style>
 <body>
-    
     <?php
     session_start();
-    
-
-
-    $dbconn = mysqli_connect('localhost', 'root', "", "team01");
-    mysqli_select_db($dbconn, 'team01');
+    $dbconn = mysqli_connect('localhost', 'root', "", "user");
+    mysqli_select_db($dbconn, 'user');
     $uid = $_POST['uid'];
     $upw = $_POST['upw'];
 

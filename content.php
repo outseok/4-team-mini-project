@@ -1,7 +1,15 @@
+
 <?php
 include "dbconn.php";
-$sql = "SELECT * FROM diary ORDER BY reg_date DESC";
+session_start();
+if (!isset($_SESSION['uid'])) {
+    echo "<script>alert('로그인 후 이용해주시기 바랍니다.'); location.href='login.php';</script>";
+    exit;
+}
+$uid = $_SESSION["uid"];
+$sql = "SELECT * FROM diary WHERE uid = '$uid' ORDER BY reg_date DESC";
 $result = mysqli_query($dbconn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +43,13 @@ $result = mysqli_query($dbconn, $sql);
             font-size: 0.9em;
             color: #888;
         }
+
         .diary-title {
             font-size: 1.2em;
             font-weight: bold;
             margin: 10px 0;
         }
+
         .diary-emotion {
             color: #ff69b4;
             font-weight: bold;
@@ -49,6 +59,7 @@ $result = mysqli_query($dbconn, $sql);
             line-height: 1.6;
             color: #444;
         }
+
         .re-Btn {
             padding: 10px 20px;
             background: pink;
@@ -63,6 +74,7 @@ $result = mysqli_query($dbconn, $sql);
 </head>
 
 <body>
+
     <div class="container">
         <h2>나의 감정 돌아보기🗃️</h2>
         <a href="diary.html" class="re-Btn">돌아가기</a>
